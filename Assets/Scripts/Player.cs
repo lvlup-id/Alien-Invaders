@@ -3,9 +3,9 @@ using UnityEngine;
 public class Player : Entity
 {
     public float speed = 1.5f;
+    public float shootingSpeed = 5f;
     public float firingCooldown = 1f;
     public GameObject laserPrefab;
-    public new GameObject explosionPrefab;
 
     [SerializeField] private AudioClip laserAudio;
     [SerializeField] private float horizontalLimit = 2.5f;
@@ -45,10 +45,11 @@ public class Player : Entity
                 cooldownTimer = firingCooldown;
                 audioSource.PlayOneShot(laserAudio);
 
-                GameObject laser = PlayerLaserPool.Instance.Get();
-                laser.SetActive(true);
+                GameObject laser = Instantiate(laserPrefab);
+                laser.transform.SetParent(transform.parent);
                 laser.transform.position = transform.position;
-                laser.GetComponent<Projectile>().Init();
+                laser.GetComponent<Rigidbody2D>().velocity = Vector2.up * shootingSpeed;
+                Destroy(laser.gameObject, 2f);
             }
         }
     }
@@ -56,6 +57,6 @@ public class Player : Entity
     protected override void OnDie()
     {
         base.OnDie();
-        SceneController.Instance.ChangeScene("Menu", 1f);
+        SceneController.Instance.ChangeScene("Menu");
     }
 }

@@ -229,9 +229,9 @@ MonoBehaviour:
   - EnemyLaser
   - Enemy
   speed: 1.5
+  shootingSpeed: 5
   firingCooldown: 1
   laserPrefab: {fileID: 4023733798500460248, guid: 6643401357fc3a64092cedbc9218a74f, type: 3}
-  explosionPrefab: {fileID: 7157822738630249509, guid: 82364ac588a662343bdf875b47632b6a, type: 3}
   laserAudio: {fileID: 8300000, guid: f3cc5c5742f3cae4faf492e525d9ac7c, type: 3}
   horizontalLimit: 2.5
 --- !u!50 &130667152
@@ -1388,15 +1388,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1559,67 +1559,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
   m_PrefabInstance: {fileID: 1044887664}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1068185164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1068185166}
-  - component: {fileID: 1068185167}
-  - component: {fileID: 1068185168}
-  m_Layer: 0
-  m_Name: Projectiles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1068185166
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068185164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068185167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068185164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b38b261a5000c44bb2e306e875122b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 4023733798500460248, guid: 6643401357fc3a64092cedbc9218a74f, type: 3}
-  amount: 1
---- !u!114 &1068185168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068185164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63b0a85d408167459c922be84ef1366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 4573002577981552995, guid: 662681d335616524e9b9e927ae3f20c2, type: 3}
-  amount: 1
 --- !u!1001 &1150612090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2152,15 +2091,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1242290619905315037, guid: cbf5569305cd79946b71e8e3b795b864, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

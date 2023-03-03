@@ -25,15 +25,14 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        enemies = new List<Enemy>();
-
-        Enemy[] _enemies = GetComponentsInChildren<Enemy>();
-        foreach (Enemy enemy in _enemies)
-            enemies.Add(enemy);
     }
 
     private void Start()
     {
+        Enemy[] _enemies = GetComponentsInChildren<Enemy>();
+        enemies = new List<Enemy>();
+        enemies.AddRange(_enemies);
+
         targetPosition = enemyContainer.transform.position;
         shootingTimer = shootingInterval;
     }
@@ -59,10 +58,15 @@ public class GameController : MonoBehaviour
             shootingTimer = shootingInterval;
             Enemy randomEnemy = enemies[Random.Range(0, enemies.Count)];
 
-            GameObject laser = EnemyLaserPool.Instance.Get();
-            laser.SetActive(true);
-            laser.transform.position = randomEnemy.transform.position;
-            laser.GetComponent<Projectile>().Init();
+            if (randomEnemy != null)
+            {
+                GameObject laser = Instantiate(enemyLaserPrefab);
+                laser.transform.SetParent(transform);
+                laser.transform.position = randomEnemy.transform.position;
+                laser.GetComponent<Rigidbody2D>().velocity = Vector2.down * shootingSpeed;
+                Destroy(laser, 2f);
+            }
+            else shootingTimer = 0;
         }
     }
 
@@ -76,13 +80,11 @@ public class GameController : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             if (movingDirection > 0)
-                endMostPosition =
-                    enemy.transform.position.x > endMostPosition ?
-                    enemy.transform.position.x : endMostPosition;
+                endMostPosition = enemy.transform.position.x > endMostPosition
+                 ? enemy.transform.position.x : endMostPosition;
             else
-                endMostPosition =
-                    enemy.transform.position.x < endMostPosition ?
-                    enemy.transform.position.x : endMostPosition;
+                endMostPosition = enemy.transform.position.x < endMostPosition
+                 ? enemy.transform.position.x : endMostPosition;
         }
 
         if (Mathf.Abs(endMostPosition) > horizontalLimit)

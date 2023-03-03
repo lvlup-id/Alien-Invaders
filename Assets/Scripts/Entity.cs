@@ -11,7 +11,8 @@ public class Entity : MonoBehaviour
         if (triggerTag.Contains(other.tag))
         {
             OnDie();
-            if (other.TryGetComponent<Projectile>(out Projectile p)) p.Release();
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 
@@ -20,6 +21,5 @@ public class Entity : MonoBehaviour
         GameObject explosion = Instantiate(explosionPrefab);
         explosion.transform.SetParent(transform.parent.parent);
         explosion.transform.position = transform.position;
-        Destroy(gameObject);
     }
 }
