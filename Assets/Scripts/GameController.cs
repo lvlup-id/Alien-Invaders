@@ -60,11 +60,17 @@ public class GameController : MonoBehaviour
 
             if (randomEnemy != null)
             {
-                GameObject laser = Instantiate(enemyLaserPrefab);
-                laser.transform.SetParent(transform);
-                laser.transform.position = randomEnemy.transform.position;
-                laser.GetComponent<Rigidbody2D>().velocity = Vector2.down * shootingSpeed;
-                Destroy(laser, 2f);
+                GameObject laser = EnemyLaserPool.Instance.Get();
+                if (laser != null)
+                {
+                    laser.transform.position = transform.position;
+                    if (laser.TryGetComponent<Projectile>(out Projectile p))
+                    {
+                        p.Init();
+                        p.CancelInvoke();
+                        p.Invoke("Release", p.lifetime);
+                    }
+                }
             }
             else shootingTimer = 0;
         }

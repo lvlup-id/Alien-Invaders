@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4023733798500460228}
   - component: {fileID: 4023733798500460229}
   - component: {fileID: 4023733798500460250}
+  - component: {fileID: 5323119249257601699}
   m_Layer: 6
   m_Name: Laser
   m_TagString: PlayerLaser
@@ -123,3 +124,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5323119249257601699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4023733798500460248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983a3e115f7b63044875950e0e860b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pool: {fileID: 0}
+  speed: 5
+  lifetime: 2

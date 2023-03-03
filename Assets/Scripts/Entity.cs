@@ -12,7 +12,8 @@ public class Entity : MonoBehaviour
         {
             OnDie();
             Destroy(gameObject);
-            Destroy(other.gameObject);
+            if (other.TryGetComponent<Projectile>(out Projectile p))
+                p.Release();
         }
     }
 
