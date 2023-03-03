@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 
     public void Init()
     {
-        if (rb == null) GetComponent<Rigidbody2D>();
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.up * speed;
     }
 
