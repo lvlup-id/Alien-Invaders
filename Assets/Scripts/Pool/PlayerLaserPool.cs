@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Handle pooling for all Laser objects
 public class PlayerLaserPool : ObjectPool
 {
     public static PlayerLaserPool Instance;

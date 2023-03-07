@@ -4,8 +4,8 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public GameObject prefab;
-    public int amount;
-    List<GameObject> pooledObject;
+    public int amount; // initial pooledObject amount
+    public List<GameObject> pooledObject;
 
 
     private void Start()
@@ -29,9 +29,12 @@ public class ObjectPool : MonoBehaviour
         GameObject obj = null;
         for (int i = 0; i < pooledObject.Count; i++)
         {
+            // check if gameobject inactive
             if (!pooledObject[i].activeInHierarchy)
             {
                 obj = pooledObject[i];
+
+                // stop loop
                 break;
             }
         }
@@ -39,6 +42,7 @@ public class ObjectPool : MonoBehaviour
         if (obj == null)
             obj = CreateNew();
 
+        // obj pasti tidak null
         obj.SetActive(true);
         return obj;
     }

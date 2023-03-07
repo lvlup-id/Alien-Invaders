@@ -19,8 +19,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void OnDie()
     {
-        GameObject explosion = Instantiate(explosionPrefab);
-        explosion.transform.SetParent(transform.parent.parent);
+        GameObject explosion = ExplosionPool.Instance.Get();
         explosion.transform.position = transform.position;
     }
 }

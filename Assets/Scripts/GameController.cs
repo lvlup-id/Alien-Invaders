@@ -1,10 +1,15 @@
+using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 
+
+// Handle all things related to gameplay / gameloop
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     public List<Enemy> enemies;
+    public int PlayerScore = 0;
+    public TextMeshProUGUI scoreText;
 
     [Header("Enemy Movement")]
     public float movingSpeed = 1f;
@@ -61,15 +66,12 @@ public class GameController : MonoBehaviour
             if (randomEnemy != null)
             {
                 GameObject laser = EnemyLaserPool.Instance.Get();
-                if (laser != null)
+                laser.transform.position = randomEnemy.transform.position;
+                if (laser.TryGetComponent<Projectile>(out Projectile p))
                 {
-                    laser.transform.position = transform.position;
-                    if (laser.TryGetComponent<Projectile>(out Projectile p))
-                    {
-                        p.Init();
-                        p.CancelInvoke();
-                        p.Invoke("Release", p.lifetime);
-                    }
+                    p.Init();
+                    p.CancelInvoke();
+                    p.Invoke("Release", p.lifetime);
                 }
             }
             else shootingTimer = 0;
@@ -100,5 +102,12 @@ public class GameController : MonoBehaviour
         }
 
         targetPosition = new Vector2((horizontalLimit * movingDirection) + endMostPosition, targetPosition.y);
+    }
+
+    public void OnEnemyDie(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+        PlayerScore += enemy.score;
+        scoreText.text = "Score : " + PlayerScore.ToString();
     }
 }

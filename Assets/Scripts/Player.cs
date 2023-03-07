@@ -44,16 +44,15 @@ public class Player : Entity
                 cooldownTimer = firingCooldown;
                 audioSource.PlayOneShot(laserAudio);
 
+                // Get gameobject from pool
                 GameObject laser = PlayerLaserPool.Instance.Get();
-                if (laser != null)
+                laser.transform.position = transform.position;
+
+                if (laser.TryGetComponent<Projectile>(out Projectile projectile))
                 {
-                    laser.transform.position = transform.position;
-                    if (laser.TryGetComponent<Projectile>(out Projectile p))
-                    {
-                        p.Init();
-                        p.CancelInvoke();
-                        p.Invoke("Release", p.lifetime);
-                    }
+                    projectile.Init();
+                    projectile.CancelInvoke();
+                    projectile.Invoke("Release", projectile.lifetime);
                 }
             }
         }
